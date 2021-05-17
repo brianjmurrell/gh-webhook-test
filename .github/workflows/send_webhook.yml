@@ -10,6 +10,7 @@ jobs:
 
   Webhook:
     runs-on: ubuntu-latest
+    steps:
     - name: Call Webhook
       - uses: distributhor/workflow-webhook@v1
         env:
