@@ -3,19 +3,15 @@ name: Trigger Webhook
 on:
   push:
     branches:
-      - master
+      - main
     pull_request:
 
 jobs:
 
   Webhook:
-    name: Webhook
     runs-on: ubuntu-latest
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
     - name: Call Webhook
-      uses: distributhor/workflow-webhook@v1
-      env:
-        webhook_url: ${{ secrets.WEBHOOK_URL }}
-        webhook_secret: ${{ secrets.WEBHOOK_SECRET }}
+      - uses: distributhor/workflow-webhook@v1
+        env:
+          webhook_url: ${{ secrets.WEBHOOK_URL }}
+          webhook_secret: ${{ secrets.WEBHOOK_SECRET }}
