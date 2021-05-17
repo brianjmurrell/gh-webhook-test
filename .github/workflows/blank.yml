@@ -1,4 +1,4 @@
-name: Trigger Webhook
+name: Trigger Webhook 2
 
 on:
   push:
@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  Webhook:
+  Webhook2:
     runs-on: ubuntu-latest
     steps:
       - uses: distributhor/workflow-webhook@v1
