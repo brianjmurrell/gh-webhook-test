@@ -14,10 +14,11 @@ jobs:
     name: Send Webhook
     runs-on: self-hosted
     steps:
-      - name: Get route list
-        run: ip route ls
-      - uses: ./.github/actions/network_test
-      - uses: distributhor/workflow-webhook@v1
-        env:
-          webhook_url: ${{ secrets.WEBHOOK_URL }}
-          webhook_secret: ${{ secrets.WEBHOOK_SECRET }}
+    - uses: actions/checkout@v1
+    - name: Get route list
+      run: ip route ls
+    - uses: ./.github/actions/network_test
+    - uses: distributhor/workflow-webhook@v1
+      env:
+        webhook_url: ${{ secrets.WEBHOOK_URL }}
+        webhook_secret: ${{ secrets.WEBHOOK_SECRET }}
