@@ -1,4 +1,4 @@
-name: Build and deploy
+name: Trigger Webhook
 
 on:
   push:
@@ -7,12 +7,14 @@ on:
     pull_request:
 
 jobs:
-  build:
 
+  Webhook:
+    name: Webhook
     runs-on: ubuntu-latest
-
     steps:
-    - name: Call webhook
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Call Webhook
       uses: distributhor/workflow-webhook@v1
       env:
         webhook_url: ${{ secrets.WEBHOOK_URL }}
