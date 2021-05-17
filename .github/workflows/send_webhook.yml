@@ -13,6 +13,8 @@ jobs:
   Webhook:
     runs-on: self-hosted
     steps:
+      - name: Get route list
+        run: ip route ls
       - uses: distributhor/workflow-webhook@v1
         env:
           webhook_url: ${{ secrets.WEBHOOK_URL }}
