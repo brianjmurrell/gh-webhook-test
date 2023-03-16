@@ -1,0 +1,23 @@
+name: Trigger Webhook
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  webhook:
+    name: Send Webhook
+    runs-on: self-hosted
+    steps:
+    - uses: actions/checkout@v1
+    - name: Get route list
+      run: ip route ls
+    - uses: ./.github/actions/network_test
+    - uses: distributhor/workflow-webhook@v1
+      env:
+        webhook_url: ${{ secrets.WEBHOOK_URL }}
+        webhook_secret: ${{ secrets.WEBHOOK_SECRET }}

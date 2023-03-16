@@ -1,0 +1,6 @@
+name: 'Test Network'
+description: 'Test network'
+author: 'Brian J. Murrell'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
